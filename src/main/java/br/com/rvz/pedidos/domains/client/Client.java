@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -17,7 +19,7 @@ import javax.persistence.Table;
 import br.com.rvz.pedidos.domains.Card;
 
 @Entity
-@Table("clientes")
+@Table(name = "clients")
 public class Client {
 	
 	@Id
@@ -33,7 +35,7 @@ public class Client {
 	@Column(length = 100, nullable = false)
 	private String email;
 	
-	@Column(nullable = false, length = 15)
+	@Column(nullable = false, length = 15, unique = true)
 	private String cpf;
 	
 	@ManyToOne
@@ -42,12 +44,13 @@ public class Client {
 	@ManyToMany
 	private List<Card> cards;
 
-	public Long getId() {
-		return id;
-	}
 
 	public Client() {
 		
+	}
+	
+	public Long getId() {
+		return id;
 	}
 	
 	public void setId(Long id) {
