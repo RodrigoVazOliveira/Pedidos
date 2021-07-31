@@ -7,39 +7,45 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Class para modelo de endereços do cliente 
+ * @author Rodrigo Vaz De Oliveira
+ * @category modelos
+ *
+ */
 @Entity
 @Table("enderecos")
-public class Endereco {
+public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(length = 150, nullable = false)
-	private String logradouro;
+	private String publicPlace;
 	
 	@Column(length = 10, nullable = false)
-	private String cep;
+	private String zipCode;
 	
 	@Column(length = 45, nullable = false)
-	private String bairro;
+	private String district;
 	
 	@Column(length = 45, nullable = false)
-	private String cidade;
+	private String city;
 	
 	@Column(length = 10, nullable = false)
-	private String numero;
+	private String number;
 	
 	@Column(length = 45, nullable = false)
-	private String complemento;
+	private String complement;
 	
 	@Column(length = 45, nullable = false)
-	private String estado;
+	private String state;
 
-	public Endereco() {
+	public Address() {
 		
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -48,59 +54,59 @@ public class Endereco {
 		this.id = id;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
+	public String getPublicPlace() {
+		return publicPlace;
 	}
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setPublicPlace(String publicPlace) {
+		this.publicPlace = publicPlace;
 	}
 
-	public String getCep() {
-		return cep;
+	public String getZipCode() {
+		return zipCode;
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
-	public String getBairro() {
-		return bairro;
+	public String getDistrict() {
+		return district;
 	}
 
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public String getCity() {
+		return city;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getNumero() {
-		return numero;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
-	public String getComplemento() {
-		return complemento;
+	public String getComplement() {
+		return complement;
 	}
 
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
+	public void setComplement(String complement) {
+		this.complement = complement;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getState() {
+		return state;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setState(String state) {
+		this.state = state;
 	}
 }
