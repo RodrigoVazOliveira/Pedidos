@@ -1,4 +1,4 @@
-package br.com.rvz.pedidos.domains;
+package br.com.rvz.pedidos.domains.client;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

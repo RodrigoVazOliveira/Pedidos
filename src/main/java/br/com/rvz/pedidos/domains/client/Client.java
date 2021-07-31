@@ -1,4 +1,4 @@
-package br.com.rvz.pedidos.domains;
+package br.com.rvz.pedidos.domains.client;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,9 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.rvz.pedidos.domains.Card;
+
 @Entity
 @Table("clientes")
-public class Cliente {
+public class Client {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +46,7 @@ public class Cliente {
 		return id;
 	}
 
-	public Cliente() {
+	public Client() {
 		
 	}
 	
