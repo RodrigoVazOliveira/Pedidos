@@ -3,6 +3,7 @@ package br.com.rvz.pedidos.domains;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 45, nullable = false)
+	@Column(length = 60, nullable = false)
 	private String nameComplete;
 	
 	@Column(nullable = false)
@@ -34,10 +35,10 @@ public class Cliente {
 	private String cpf;
 	
 	@ManyToOne
-	private Endereco endereco;
+	private Address endereco;
 	
 	@ManyToMany
-	private List<Cartoes> cartoes;
+	private List<Card> cards;
 
 	public Long getId() {
 		return id;
@@ -83,19 +84,19 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 
-	public Endereco getEndereco() {
+	public Address getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(Address endereco) {
 		this.endereco = endereco;
 	}
 
-	public List<Cartoes> getCartoes() {
-		return cartoes;
+	public List<Card> getCards() {
+		return cards;
 	}
 
-	public void setCartoes(List<Cartoes> cartoes) {
-		this.cartoes = cartoes;
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
 	}
 }
