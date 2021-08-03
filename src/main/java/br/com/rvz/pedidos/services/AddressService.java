@@ -17,8 +17,8 @@ public class AddressService {
 		this.addressRepository = addressRepository;
 	}
 	
-	public void saveAddress(Address address) throws IllegalArgumentException {
-		LOG.info("Gravando novo endereço na base de dados!");
-		this.addressRepository.save(address);
+	public Address recordddress(Address address) throws IllegalArgumentException {
+		this.LOG.info("Gravando novo endereço na base de dados!");
+		return this.addressRepository.save(address);
 	}
 }
