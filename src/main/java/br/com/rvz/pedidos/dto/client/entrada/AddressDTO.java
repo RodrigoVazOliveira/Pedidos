@@ -1,6 +1,10 @@
 package br.com.rvz.pedidos.dto.client.entrada;
 
 import javax.persistence.Column;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import br.com.rvz.pedidos.domains.client.Address;
 
@@ -12,12 +16,46 @@ import br.com.rvz.pedidos.domains.client.Address;
  */
 public class AddressDTO {
 	
+	@NotNull(message = "Nome do publicPlace não informado")
+	@NotBlank(message = "Nome do publicPlace em branco")
+	@NotEmpty(message = "Campo publicPlace vazio!")
+	@Max(value = 150, message = "O máximo de caractere é de 150 no publicPlace!")
 	private String publicPlace;
+	
+	@NotNull(message = "Nome do publicPlace não informado")
+	@NotBlank(message = "Nome do publicPlace em branco")
+	@NotEmpty(message = "Campo publicPlace vazio!")
+	@Max(value = 10, message = "O máximo de caractere é de 10 no publicPlace!")
 	private String zipCode;
+	
+	@NotNull(message = "Nome do district não informado")
+	@NotBlank(message = "Nome do district em branco")
+	@NotEmpty(message = "Campo district vazio!")
+	@Max(value = 45, message = "O máximo de caractere é de 45 no district!")
 	private String district;
+	
+	@NotNull(message = "Nome do city não informado")
+	@NotBlank(message = "Nome do city em branco")
+	@NotEmpty(message = "Campo city vazio!")
+	@Max(value = 45, message = "O máximo de caractere é de 45 no city!")
 	private String city;
+	
+	@NotNull(message = "Nome do number não informado")
+	@NotBlank(message = "Nome do number em branco")
+	@NotEmpty(message = "Campo number vazio!")
+	@Max(value = 10, message = "O máximo de caractere é de 10 no number!")
 	private String number;
+	
+	@NotNull(message = "Nome do complement não informado")
+	@NotBlank(message = "Nome do complement em branco")
+	@NotEmpty(message = "Campo complement vazio!")
+	@Max(value = 45, message = "O máximo de caractere é de 45 no complement!")
 	private String complement;
+	
+	@NotNull(message = "Nome do state não informado")
+	@NotBlank(message = "Nome do state em branco")
+	@NotEmpty(message = "Campo state vazio!")
+	@Max(value = 45, message = "O máximo de caractere é de 45 no state!")
 	private String state;
 	
 	public AddressDTO() {

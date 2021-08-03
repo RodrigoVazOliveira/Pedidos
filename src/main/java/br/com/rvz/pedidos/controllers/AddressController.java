@@ -1,5 +1,7 @@
 package br.com.rvz.pedidos.controllers;
 
+import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -33,7 +35,7 @@ public class AddressController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public Address recordNewAddress(@RequestBody AddressDTO addressDTO) {
+	public Address recordNewAddress(@RequestBody @Valid AddressDTO addressDTO) {
 		LOG.info("Iniciando processo para salvar os dados");
 		try {
 			return callServiceSaveAddress(addressDTO.convertDtoToModel());
