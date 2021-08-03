@@ -11,6 +11,6 @@ import br.com.rvz.pedidos.domains.client.Address;
  * @author thomas
  *
  */
-public interface AnddressRepository extends CrudRepository<Address, Long>{
+public interface AddressRepository extends CrudRepository<Address, Long>{
 
 }
