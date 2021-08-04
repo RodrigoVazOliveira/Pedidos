@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,7 +32,6 @@ public class AddressServiceTest {
 	private Address addressSend;
 	private Address addressReturn;
 	
-	@BeforeEach
 	public void setup() {
 		this.addressSend = new Address();
 		this.addressSend.setCity("Uberlãndia");
@@ -42,7 +40,7 @@ public class AddressServiceTest {
 		this.addressSend.setNumber("21");
 		this.addressSend.setPublicPlace("Rua Plutao");
 		this.addressSend.setState("Minas Gerais");
-		
+
 		this.addressReturn = new Address();
 		this.addressReturn.setCity("Uberlãndia");
 		this.addressReturn.setComplement("CASA");
@@ -52,7 +50,7 @@ public class AddressServiceTest {
 		this.addressReturn.setState("Minas Gerais");
 		this.addressReturn.setId(1L);
 	}
-	
+
 	@Test
 	public void testRecordddressWithSuccess() {
 		LOG.info("Iniciando teste com sucesso do método recordAddress!");
