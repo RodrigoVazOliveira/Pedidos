@@ -27,7 +27,7 @@ import br.com.rvz.pedidos.services.AddressService;
 public class AddressController {
 	
 	private final AddressService addressService;
-	private final Logger LOG = LogManager.getLogger(AddressController.class);
+	private final static Logger LOG = LogManager.getLogger(AddressController.class);
 	
 	public AddressController(AddressService addressService) {
 		this.addressService = addressService;
@@ -36,13 +36,8 @@ public class AddressController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public Address recordNewAddress(@RequestBody @Valid AddressDTO addressDTO) {
-		LOG.info("Iniciando processo para salvar os dados");
-		try {
-			return callServiceSaveAddress(addressDTO.convertDtoToModel());
-		} catch (RuntimeException e) {
-			LOG.error("Ocorreu um erro no processo de gravar os dados : " + e.getMessage());
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-		}
+		LOG.error("Iniciando processo para salvar os dados");
+		return callServiceSaveAddress(addressDTO.convertDtoToModel());
 	}
 	
 	private Address callServiceSaveAddress(Address address) {

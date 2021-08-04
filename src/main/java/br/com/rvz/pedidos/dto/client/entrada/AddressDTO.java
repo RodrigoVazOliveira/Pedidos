@@ -22,10 +22,10 @@ public class AddressDTO {
 	@Max(value = 150, message = "O máximo de caractere é de 150 no publicPlace!")
 	private String publicPlace;
 	
-	@NotNull(message = "Nome do publicPlace não informado")
-	@NotBlank(message = "Nome do publicPlace em branco")
-	@NotEmpty(message = "Campo publicPlace vazio!")
-	@Max(value = 10, message = "O máximo de caractere é de 10 no publicPlace!")
+	@NotNull(message = "Nome do zipCode não informado")
+	@NotBlank(message = "Nome do zipCode em branco")
+	@NotEmpty(message = "Campo zipCode vazio!")
+	@Max(value = 10, message = "O máximo de caractere é de 10 no zipCode!")
 	private String zipCode;
 	
 	@NotNull(message = "Nome do district não informado")
