@@ -33,8 +33,7 @@ public class AddressServiceTest {
 	@Autowired
 	private AddressService addressService;
 	
-	private Address addressSend;
-	private Address addressReturn;
+	private Address addressSend, addressReturn;
 	
 	@BeforeEach
 	public void setup() {
