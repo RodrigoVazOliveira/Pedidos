@@ -1,19 +1,24 @@
 package br.com.rvz.pedidos.service;
 
-import br.com.rvz.pedidos.domains.client.Address;
-import br.com.rvz.pedidos.repositories.AddressRepository;
-import br.com.rvz.pedidos.services.AddressService;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import br.com.rvz.pedidos.domains.client.Address;
+import br.com.rvz.pedidos.repositories.AddressRepository;
+import br.com.rvz.pedidos.services.AddressService;
 
 @SpringBootTest
 @ContextConfiguration(classes = AddressService.class)
@@ -31,6 +36,7 @@ public class AddressServiceTest {
 	private Address addressSend;
 	private Address addressReturn;
 	
+	@BeforeEach
 	public void setup() {
 		this.addressSend = new Address();
 		this.addressSend.setCity("Uberlãndia");
@@ -39,7 +45,7 @@ public class AddressServiceTest {
 		this.addressSend.setNumber("21");
 		this.addressSend.setPublicPlace("Rua Plutao");
 		this.addressSend.setState("Minas Gerais");
-
+		
 		this.addressReturn = new Address();
 		this.addressReturn.setCity("Uberlãndia");
 		this.addressReturn.setComplement("CASA");
@@ -65,5 +71,14 @@ public class AddressServiceTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			this.addressService.recordddress(null);
 		});
+	}
+	
+	@Test
+	public void testFindAllAddressByIdWithSuccess() {
+		LOG.info("Iniciando teste de buscar todos endereços do cliente com id do endereco ecom sucesso!");
+		Optional<Address> addressOptional = Optional.of(this.addressReturn);
+		when(addressRepository.findById(Mockito.anyLong())).thenReturn(addressOptional);
+		Address expectActual = this.addressService.findAddressById(1L);
+		Assertions.assertEquals(expectActual, this.addressReturn);
 	}
  }
