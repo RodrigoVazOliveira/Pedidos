@@ -34,7 +34,7 @@ public class AddressController {
 	}
 
 	@PostMapping
-	@ResponseStatus(HttpStatus.ACCEPTED)
+	@ResponseStatus(HttpStatus.CREATED)
 	public Address recordNewAddress(@RequestBody @Valid AddressDTO addressDTO) {
 		LOG.error("Iniciando processo para salvar os dados");
 		return callServiceSaveAddress(addressDTO.convertDtoToModel());
