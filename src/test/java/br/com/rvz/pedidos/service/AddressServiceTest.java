@@ -1,8 +1,8 @@
 package br.com.rvz.pedidos.service;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-
+import br.com.rvz.pedidos.domains.client.Address;
+import br.com.rvz.pedidos.repositories.AddressRepository;
+import br.com.rvz.pedidos.services.AddressService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
@@ -12,9 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 
-import br.com.rvz.pedidos.domains.client.Address;
-import br.com.rvz.pedidos.repositories.AddressRepository;
-import br.com.rvz.pedidos.services.AddressService;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ContextConfiguration(classes = AddressService.class)
@@ -52,10 +51,19 @@ public class AddressServiceTest {
 	}
 
 	@Test
-	public void testRecordddressWithSuccess() {
+	public void testRecordAddressWithSuccess() {
 		LOG.info("Iniciando teste com sucesso do método recordAddress!");
 		when(this.addressRepository.save(any())).thenReturn(this.addressReturn);
 		Address testActual = this.addressService.recordddress(this.addressSend);
 		Assertions.assertEquals(testActual, this.addressReturn);
 	}
-}
+	
+	@Test
+	public void testRecordAddressWithErrorException() {
+		LOG.info("Iniciando teste com erro do método recordAddress!");
+		when(addressRepository.save(any())).thenThrow(IllegalArgumentException.class);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			this.addressService.recordddress(null);
+		});
+	}
+ }
